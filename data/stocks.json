@@ -1,0 +1,31 @@
+{
+  "generated": "",
+  "generated_display": "",
+  "stocks": [
+    { "ticker": "AAPL",  "name": "Apple",                  "tv_symbol": "NASDAQ:AAPL",  "sector": "Technology",              "summary": "" },
+    { "ticker": "MSFT",  "name": "Microsoft",              "tv_symbol": "NASDAQ:MSFT",  "sector": "Technology",              "summary": "" },
+    { "ticker": "NVDA",  "name": "NVIDIA",                 "tv_symbol": "NASDAQ:NVDA",  "sector": "Technology",              "summary": "" },
+    { "ticker": "GOOGL", "name": "Alphabet",               "tv_symbol": "NASDAQ:GOOGL", "sector": "Communication Services",  "summary": "" },
+    { "ticker": "AMZN",  "name": "Amazon",                 "tv_symbol": "NASDAQ:AMZN",  "sector": "Consumer Discretionary",  "summary": "" },
+    { "ticker": "META",  "name": "Meta Platforms",         "tv_symbol": "NASDAQ:META",  "sector": "Communication Services",  "summary": "" },
+    { "ticker": "TSLA",  "name": "Tesla",                  "tv_symbol": "NASDAQ:TSLA",  "sector": "Consumer Discretionary",  "summary": "" },
+    { "ticker": "AVGO",  "name": "Broadcom",               "tv_symbol": "NASDAQ:AVGO",  "sector": "Technology",              "summary": "" },
+    { "ticker": "AMD",   "name": "Advanced Micro Devices", "tv_symbol": "NASDAQ:AMD",   "sector": "Technology",              "summary": "" },
+    { "ticker": "ORCL",  "name": "Oracle",                 "tv_symbol": "NYSE:ORCL",    "sector": "Technology",              "summary": "" },
+    { "ticker": "CRM",   "name": "Salesforce",             "tv_symbol": "NYSE:CRM",     "sector": "Technology",              "summary": "" },
+    { "ticker": "JPM",   "name": "JPMorgan Chase",         "tv_symbol": "NYSE:JPM",     "sector": "Financials",              "summary": "" },
+    { "ticker": "BAC",   "name": "Bank of America",        "tv_symbol": "NYSE:BAC",     "sector": "Financials",              "summary": "" },
+    { "ticker": "V",     "name": "Visa",                   "tv_symbol": "NYSE:V",       "sector": "Financials",              "summary": "" },
+    { "ticker": "MA",    "name": "Mastercard",             "tv_symbol": "NYSE:MA",      "sector": "Financials",              "summary": "" },
+    { "ticker": "NFLX",  "name": "Netflix",                "tv_symbol": "NASDAQ:NFLX",  "sector": "Communication Services",  "summary": "" },
+    { "ticker": "LLY",   "name": "Eli Lilly",              "tv_symbol": "NYSE:LLY",     "sector": "Healthcare",              "summary": "" },
+    { "ticker": "UNH",   "name": "UnitedHealth",           "tv_symbol": "NYSE:UNH",     "sector": "Healthcare",              "summary": "" },
+    { "ticker": "JNJ",   "name": "Johnson & Johnson",      "tv_symbol": "NYSE:JNJ",     "sector": "Healthcare",              "summary": "" },
+    { "ticker": "WMT",   "name": "Walmart",                "tv_symbol": "NYSE:WMT",     "sector": "Consumer Staples",        "summary": "" },
+    { "ticker": "COST",  "name": "Costco",                 "tv_symbol": "NASDAQ:COST",  "sector": "Consumer Staples",        "summary": "" },
+    { "ticker": "HD",    "name": "Home Depot",             "tv_symbol": "NYSE:HD",      "sector": "Consumer Discretionary",  "summary": "" },
+    { "ticker": "XOM",   "name": "Exxon Mobil",            "tv_symbol": "NYSE:XOM",     "sector": "Energy",                  "summary": "" },
+    { "ticker": "KO",    "name": "Coca-Cola",              "tv_symbol": "NYSE:KO",      "sector": "Consumer Staples",        "summary": "" },
+    { "ticker": "DIS",   "name": "Walt Disney",            "tv_symbol": "NYSE:DIS",     "sector": "Communication Services",  "summary": "" }
+  ]
+}

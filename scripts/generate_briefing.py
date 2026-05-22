@@ -283,6 +283,8 @@ Use this HTML skeleton — fill in every [PLACEHOLDER]:
     <a href="../../index.html" class="wordmark">JDX <span class="accent">DAILY US MARKETS</span></a>
     <nav class="site-nav">
       <a href="../../index.html" class="active">Today</a>
+      <a href="../../news.html">News</a>
+      <a href="../../stocks.html">Stocks</a>
       <a href="../../archive.html">Archive</a>
       <a href="../../about.html">About</a>
     </nav>
@@ -412,6 +414,7 @@ def rebuild_index(date_str: str, standard_html: str) -> None:
     <nav class="site-nav">
       <a href="index.html" class="active">Today</a>
       <a href="news.html">News</a>
+      <a href="stocks.html">Stocks</a>
       <a href="archive.html">Archive</a>
       <a href="about.html">About</a>
     </nav>
@@ -458,6 +461,17 @@ def rebuild_index(date_str: str, standard_html: str) -> None:
       <a href="briefings/{date_str}/in-depth.html" class="btn btn-primary">Read</a>
       <a href="briefings/{date_str}/in-depth.pdf" class="btn btn-ghost">PDF</a>
     </div>
+  </div>
+</section>
+
+<section class="container stock-teaser">
+  <div class="stock-teaser-inner">
+    <div>
+      <div class="label">NEW · STOCK LOOKUP</div>
+      <h2>Look up any US stock</h2>
+      <p>Interactive charts, key stats, technicals and JDX's daily AI take on 25 watchlist names.</p>
+    </div>
+    <a href="stocks.html" class="btn">Open Stock Lookup →</a>
   </div>
 </section>
 

@@ -282,6 +282,7 @@ def build_news_page(items: list[dict], date_str: str, prefix: str = "") -> str:
     <nav class="site-nav">
       <a href="{prefix}index.html">Today</a>
       <a href="{prefix}news.html" class="active">News</a>
+      <a href="{prefix}stocks.html">Stocks</a>
       <a href="{prefix}archive.html">Archive</a>
       <a href="{prefix}about.html">About</a>
     </nav>
@@ -340,8 +341,9 @@ def inject_into_index(preview_html: str) -> None:
     content    = index_path.read_text(encoding="utf-8")
 
     if NEWS_START in content and NEWS_END in content:
-        # Replace everything between (and including) the markers
-        pattern = re.escape(NEWS_START) + r".*?" + re.escape(NEWS_END)
+        # Replace the markers (and any blank lines immediately before them, so
+        # the gap above the section does not grow by one line every run).
+        pattern = r"\n*" + re.escape(NEWS_START) + r".*?" + re.escape(NEWS_END)
         updated = re.sub(pattern, preview_html, content, flags=re.DOTALL)
     else:
         # Fallback: insert before </body>

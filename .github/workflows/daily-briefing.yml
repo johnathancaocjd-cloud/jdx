@@ -44,6 +44,11 @@ jobs:
           UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
         run: python scripts/generate_news.py
 
+      - name: Generate stock watchlist data
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python scripts/generate_stocks.py
+
       - name: Generate PDFs + update archive
         run: python scripts/update_site.py
 

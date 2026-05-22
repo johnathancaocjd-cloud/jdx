@@ -23,6 +23,9 @@ ENV/
 *.swp
 *.swo
 
+# Local tooling (Claude Code preview config)
+.claude/
+
 # WeasyPrint / PDF build artefacts
 *.tmp
 *.log

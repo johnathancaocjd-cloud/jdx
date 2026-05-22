@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stock Lookup — JDX</title>
+<meta name="description" content="Look up any US stock — interactive charts, key stats, technicals and financials, plus JDX's daily AI take on 25 watchlist names.">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="wordmark">JDX <span class="accent">DAILY US MARKETS</span></a>
+    <nav class="site-nav">
+      <a href="index.html">Today</a>
+      <a href="news.html">News</a>
+      <a href="stocks.html" class="active">Stocks</a>
+      <a href="archive.html">Archive</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">STOCK LOOKUP</div>
+    <h1>Look up any US stock.</h1>
+    <p class="lede">Search any US ticker for an interactive chart, key stats, technical analysis and financials — plus JDX's daily AI take on the 25 stocks we track.</p>
+  </div>
+</section>
+
+<section class="container stock-tools">
+  <form class="stock-search" id="stock-search-form" autocomplete="off">
+    <input id="stock-search-input" name="ticker" list="ticker-options"
+           placeholder="Enter a ticker — e.g. AAPL, TSLA, DIS" aria-label="Stock ticker">
+    <datalist id="ticker-options"></datalist>
+    <button type="submit" class="btn btn-primary">Look up</button>
+  </form>
+
+  <div class="watchlist-head">
+    <h2>JDX Watchlist</h2>
+    <span>25 stocks we track with a daily AI take</span>
+  </div>
+  <div class="watchlist-grid" id="watchlist-grid"></div>
+</section>
+
+<section class="container stock-result" id="stock-result" hidden>
+  <div class="stock-result-head">
+    <h2 id="sr-title"></h2>
+    <span class="sr-sector" id="sr-sector"></span>
+  </div>
+
+  <div class="jdx-take" id="jdx-take"></div>
+
+  <div class="tv-block" id="w-info"></div>
+  <div class="tv-block tv-chart" id="w-chart"></div>
+  <div class="tv-row">
+    <div class="tv-block" id="w-tech"></div>
+    <div class="tv-block" id="w-profile"></div>
+  </div>
+  <div class="tv-block" id="w-fin"></div>
+
+  <p class="tv-disclaimer">Charts &amp; data via TradingView. Editorial and informational only — not investment advice.</p>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>© 2026 JDX</div>
+    <div class="disclaimer">Editorial and informational only. Not investment advice. Always verify figures and consult a licensed advisor before trading.</div>
+  </div>
+</footer>
+
+<script src="assets/stocks.js"></script>
+</body>
+</html>
