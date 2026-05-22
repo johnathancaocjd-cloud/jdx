@@ -391,14 +391,21 @@ def main() -> None:
     # Fetch one photo per story — Unsplash if key present, picsum.photos fallback otherwise
     print(f"\nFetching images for {len(items)} stories…", flush=True)
     for item in items:
-        cat   = item.get("category", "Macro")
-        query = item.get("image_query") or UNSPLASH_QUERIES.get(cat, "finance economy")
+        cat     = item.get("category", "Macro")
+        specific = item.get("image_query", "").strip()
+        broad    = UNSPLASH_QUERIES.get(cat, "finance economy")
         if unsplash_key:
-            img = fetch_unsplash(query, unsplash_key)
+            # Tier 1: try the story-specific phrase
+            img = fetch_unsplash(specific or broad, unsplash_key)
             time.sleep(0.3)  # stay well within Unsplash rate limits
+            # Tier 2: specific phrase too narrow — retry with the broad category term
+            if not img and specific and broad != specific:
+                img = fetch_unsplash(broad, unsplash_key)
+                time.sleep(0.3)
+            # Tier 3: Unsplash unavailable — deterministic picsum.photos fallback
             if not img:
                 img = fetch_fallback_image(cat)
-                print(f"  → Fallback image for: {query[:50]}", flush=True)
+                print(f"  → Fallback image for: {(specific or broad)[:50]}", flush=True)
         else:
             img = fetch_fallback_image(cat)
         item["image_url"] = img
