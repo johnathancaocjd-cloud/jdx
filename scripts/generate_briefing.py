@@ -461,7 +461,8 @@ def rebuild_index(date_str: str, standard_html: str) -> None:
   </div>
 </section>
 
-<!-- NEWS_PREVIEW_PLACEHOLDER -->
+<!-- JDX_NEWS_START -->
+<!-- JDX_NEWS_END -->
 
 <footer class="site-footer">
   <div class="container">
