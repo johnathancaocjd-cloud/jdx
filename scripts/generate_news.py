@@ -97,7 +97,7 @@ def fetch_unsplash(query: str, access_key: str) -> str:
 # ---------------------------------------------------------------------------
 
 RSS_FEEDS = [
-    ("Reuters",       "https://feeds.reuters.com/reuters/businessNews"),
+    ("Investing.com", "https://www.investing.com/rss/news_25.rss"),
     ("CNBC",          "https://www.cnbc.com/id/10001147/device/rss/rss.html"),
     ("MarketWatch",   "https://feeds.content.dowjones.io/public/rss/mw_realtimeheadlines"),
     ("Yahoo Finance", "https://finance.yahoo.com/rss/topstories"),
