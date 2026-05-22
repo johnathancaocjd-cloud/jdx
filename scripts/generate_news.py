@@ -43,9 +43,29 @@ UNSPLASH_QUERIES = {
     "Financials":  "wall street bank finance",
 }
 
+# Deterministic seeds for picsum.photos fallback (free, no API key)
+FALLBACK_SEEDS = {
+    "Tech":        "tech-chips-42",
+    "Energy":      "energy-oil-17",
+    "Fed":         "fed-banking-33",
+    "Macro":       "macro-economy-55",
+    "Earnings":    "earnings-finance-28",
+    "Consumer":    "consumer-retail-61",
+    "Healthcare":  "health-pharma-74",
+    "Geopolitics": "geo-politics-89",
+    "Financials":  "wallstreet-96",
+}
+
+
+def fetch_fallback_image(category: str) -> str:
+    """Return a deterministic picsum.photos URL — no API key required."""
+    seed = FALLBACK_SEEDS.get(category, "finance-market-50")
+    return f"https://picsum.photos/seed/{seed}/800/450"
+
 
 def fetch_unsplash(category: str, access_key: str) -> str:
     """Return an Unsplash image URL for the given category, or '' on failure."""
+    import urllib.error
     query = UNSPLASH_QUERIES.get(category, "finance economy")
     url   = (
         "https://api.unsplash.com/photos/random"
@@ -56,10 +76,20 @@ def fetch_unsplash(category: str, access_key: str) -> str:
     try:
         req = urllib.request.Request(url, headers={"Accept-Version": "v1"})
         with urllib.request.urlopen(req, timeout=8) as resp:
-            data = json.loads(resp.read())
-        return data["urls"].get("regular", "")
+            raw  = resp.read()
+            data = json.loads(raw)
+        img_url = data["urls"].get("regular", "")
+        if img_url:
+            print(f"  Unsplash OK ({category})", flush=True)
+        else:
+            print(f"  Unsplash: no 'regular' key in response for {category}", flush=True)
+        return img_url
+    except urllib.error.HTTPError as e:
+        body = e.read().decode("utf-8", errors="replace")[:300]
+        print(f"  Unsplash HTTP {e.code} ({category}): {body}", flush=True)
+        return ""
     except Exception as e:
-        print(f"  Unsplash warning ({category}): {e}", flush=True)
+        print(f"  Unsplash error ({category}): {type(e).__name__}: {e}", flush=True)
         return ""
 
 
@@ -341,7 +371,7 @@ def main() -> None:
     if unsplash_key:
         print("  Unsplash API key found — will fetch real photos", flush=True)
     else:
-        print("  No UNSPLASH_ACCESS_KEY — using category gradients as fallback", flush=True)
+        print("  No UNSPLASH_ACCESS_KEY — will use picsum.photos fallback images", flush=True)
 
     client   = Groq(api_key=api_key)
     now_hkt  = datetime.now(timezone.utc) + timedelta(hours=8)
@@ -358,15 +388,19 @@ def main() -> None:
         print("Groq returned no items — skipping.", flush=True)
         return
 
-    # Fetch one Unsplash photo per story
-    if unsplash_key:
-        print(f"\nFetching Unsplash photos for {len(items)} stories…", flush=True)
-        for item in items:
-            item["image_url"] = fetch_unsplash(item.get("category", "Macro"), unsplash_key)
-            time.sleep(0.3)  # stay well within rate limits
-    else:
-        for item in items:
-            item["image_url"] = ""
+    # Fetch one photo per story — Unsplash if key present, picsum.photos fallback otherwise
+    print(f"\nFetching images for {len(items)} stories…", flush=True)
+    for item in items:
+        cat = item.get("category", "Macro")
+        if unsplash_key:
+            img = fetch_unsplash(cat, unsplash_key)
+            time.sleep(0.3)  # stay well within Unsplash rate limits
+            if not img:
+                img = fetch_fallback_image(cat)
+                print(f"  → Fallback image used for {cat}", flush=True)
+        else:
+            img = fetch_fallback_image(cat)
+        item["image_url"] = img
 
     with_img = sum(1 for i in items if i.get("image_url"))
     print(f"  {len(items)} stories ready ({with_img} with photos)", flush=True)
