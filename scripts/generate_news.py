@@ -63,10 +63,9 @@ def fetch_fallback_image(category: str) -> str:
     return f"https://picsum.photos/seed/{seed}/800/450"
 
 
-def fetch_unsplash(category: str, access_key: str) -> str:
-    """Return an Unsplash image URL for the given category, or '' on failure."""
+def fetch_unsplash(query: str, access_key: str) -> str:
+    """Return an Unsplash image URL for the given search query, or '' on failure."""
     import urllib.error
-    query = UNSPLASH_QUERIES.get(category, "finance economy")
     url   = (
         "https://api.unsplash.com/photos/random"
         f"?query={urllib.parse.quote(query)}"
@@ -80,16 +79,16 @@ def fetch_unsplash(category: str, access_key: str) -> str:
             data = json.loads(raw)
         img_url = data["urls"].get("regular", "")
         if img_url:
-            print(f"  Unsplash OK ({category})", flush=True)
+            print(f"  Unsplash OK: {query[:50]}", flush=True)
         else:
-            print(f"  Unsplash: no 'regular' key in response for {category}", flush=True)
+            print(f"  Unsplash: no 'regular' key in response for: {query[:50]}", flush=True)
         return img_url
     except urllib.error.HTTPError as e:
         body = e.read().decode("utf-8", errors="replace")[:300]
-        print(f"  Unsplash HTTP {e.code} ({category}): {body}", flush=True)
+        print(f"  Unsplash HTTP {e.code} ({query[:40]}): {body}", flush=True)
         return ""
     except Exception as e:
-        print(f"  Unsplash error ({category}): {type(e).__name__}: {e}", flush=True)
+        print(f"  Unsplash error ({query[:40]}): {type(e).__name__}: {e}", flush=True)
         return ""
 
 
@@ -159,13 +158,14 @@ Return ONLY valid JSON — no commentary, no markdown. Schema:
 {
   "items": [
     {
-      "headline":  "original or lightly cleaned headline",
-      "summary":   "2-sentence market-impact analysis",
-      "sentiment": "bullish" | "bearish",
-      "tickers":   ["AAPL", "XLK"],
-      "category":  "Macro" | "Fed" | "Earnings" | "Tech" | "Energy" | "Geopolitics" | "Consumer" | "Healthcare" | "Financials",
-      "source":    "Reuters",
-      "url":       "https://..."
+      "headline":     "original or lightly cleaned headline",
+      "summary":      "2-sentence market-impact analysis",
+      "sentiment":    "bullish" | "bearish",
+      "tickers":      ["AAPL", "XLK"],
+      "category":     "Macro" | "Fed" | "Earnings" | "Tech" | "Energy" | "Geopolitics" | "Consumer" | "Healthcare" | "Financials",
+      "image_query":  "3-5 word photo search phrase closely matching the story (e.g. 'Walmart store shelves shoppers', 'Federal Reserve building Washington', 'Eli Lilly laboratory scientist')",
+      "source":       "Reuters",
+      "url":          "https://..."
     }
   ]
 }
@@ -369,7 +369,7 @@ def main() -> None:
         sys.exit(1)
 
     if unsplash_key:
-        print("  Unsplash API key found — will fetch real photos", flush=True)
+        print(f"  Unsplash API key found ({len(unsplash_key)} chars) — will fetch real photos", flush=True)
     else:
         print("  No UNSPLASH_ACCESS_KEY — will use picsum.photos fallback images", flush=True)
 
@@ -391,13 +391,14 @@ def main() -> None:
     # Fetch one photo per story — Unsplash if key present, picsum.photos fallback otherwise
     print(f"\nFetching images for {len(items)} stories…", flush=True)
     for item in items:
-        cat = item.get("category", "Macro")
+        cat   = item.get("category", "Macro")
+        query = item.get("image_query") or UNSPLASH_QUERIES.get(cat, "finance economy")
         if unsplash_key:
-            img = fetch_unsplash(cat, unsplash_key)
+            img = fetch_unsplash(query, unsplash_key)
             time.sleep(0.3)  # stay well within Unsplash rate limits
             if not img:
                 img = fetch_fallback_image(cat)
-                print(f"  → Fallback image used for {cat}", flush=True)
+                print(f"  → Fallback image for: {query[:50]}", flush=True)
         else:
             img = fetch_fallback_image(cat)
         item["image_url"] = img
