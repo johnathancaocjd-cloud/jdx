@@ -334,7 +334,7 @@ Use this HTML skeleton — fill in every [PLACEHOLDER]:
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user",   "content": user_msg},
         ],
-        max_tokens=16384,
+        max_tokens=8000,
         temperature=0.35,
     )
     content = resp.choices[0].message.content.strip()
@@ -527,9 +527,11 @@ def main() -> None:
         generated[edition] = body
         print(f"  Saved {path.name}  ({len(body):,} chars)", flush=True)
 
-        # Brief pause to stay well within Groq rate limits
+        # Wait 65s between calls — Groq free tier allows 12,000 tokens/min,
+        # so each edition must sit in its own minute window.
         if edition != "in-depth":
-            time.sleep(3)
+            print("  Waiting 65s for Groq rate-limit window to reset…", flush=True)
+            time.sleep(65)
 
     headline = _extract_h1(generated["standard"])
     print(f"\nHeadline: {headline}", flush=True)
