@@ -411,6 +411,7 @@ def rebuild_index(date_str: str, standard_html: str) -> None:
     <a href="index.html" class="wordmark">JDX <span class="accent">DAILY US MARKETS</span></a>
     <nav class="site-nav">
       <a href="index.html" class="active">Today</a>
+      <a href="news.html">News</a>
       <a href="archive.html">Archive</a>
       <a href="about.html">About</a>
     </nav>
@@ -459,6 +460,8 @@ def rebuild_index(date_str: str, standard_html: str) -> None:
     </div>
   </div>
 </section>
+
+<!-- NEWS_PREVIEW_PLACEHOLDER -->
 
 <footer class="site-footer">
   <div class="container">

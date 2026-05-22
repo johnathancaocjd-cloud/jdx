@@ -38,6 +38,11 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: python scripts/generate_briefing.py
 
+      - name: Generate news page + homepage preview
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python scripts/generate_news.py
+
       - name: Generate PDFs + update archive
         run: python scripts/update_site.py
 
