@@ -114,6 +114,15 @@ def update_archive(date_str: str, headline: str) -> bool:
         return False
 
     escaped = html.escape(headline)
+
+    # Add a Market Pulse link if that day's news page was archived
+    news_link = ""
+    if (ROOT / "news" / f"{date_str}.html").exists():
+        news_link = (
+            f'      <a href="news/{date_str}.html" '
+            f'class="pulse-link">Market Pulse</a>\n'
+        )
+
     new_entry = (
         f'\n  <div class="archive-item">\n'
         f'    <div class="date">{display_date(date_str)}</div>\n'
@@ -122,6 +131,7 @@ def update_archive(date_str: str, headline: str) -> bool:
         f'      <a href="briefings/{date_str}/concise.html">Concise</a>\n'
         f'      <a href="briefings/{date_str}/standard.html">Standard</a>\n'
         f'      <a href="briefings/{date_str}/in-depth.html">In-depth</a>\n'
+        f'{news_link}'
         f'    </div>\n'
         f'  </div>\n\n  {ARCHIVE_MARKER}'
     )

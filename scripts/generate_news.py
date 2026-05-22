@@ -261,7 +261,7 @@ def _card_html(item: dict) -> str:
     )
 
 
-def build_news_page(items: list[dict], date_str: str) -> str:
+def build_news_page(items: list[dict], date_str: str, prefix: str = "") -> str:
     d       = datetime.strptime(date_str, "%Y-%m-%d")
     display = f"{d.day} {d.strftime('%B')} {d.year}"
     cards   = "\n  ".join(_card_html(item) for item in items)
@@ -272,18 +272,18 @@ def build_news_page(items: list[dict], date_str: str) -> str:
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Market Pulse — JDX · {display}</title>
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="{prefix}assets/styles.css">
 </head>
 <body>
 
 <header class="site-header">
   <div class="container">
-    <a href="index.html" class="wordmark">JDX <span class="accent">DAILY US MARKETS</span></a>
+    <a href="{prefix}index.html" class="wordmark">JDX <span class="accent">DAILY US MARKETS</span></a>
     <nav class="site-nav">
-      <a href="index.html">Today</a>
-      <a href="news.html" class="active">News</a>
-      <a href="archive.html">Archive</a>
-      <a href="about.html">About</a>
+      <a href="{prefix}index.html">Today</a>
+      <a href="{prefix}news.html" class="active">News</a>
+      <a href="{prefix}archive.html">Archive</a>
+      <a href="{prefix}about.html">About</a>
     </nav>
   </div>
 </header>
@@ -415,6 +415,14 @@ def main() -> None:
 
     (ROOT / "news.html").write_text(build_news_page(items, date_str), encoding="utf-8")
     print("  Wrote news.html", flush=True)
+
+    # Permanent dated archive copy — lives in news/, so asset paths need ../
+    news_dir = ROOT / "news"
+    news_dir.mkdir(exist_ok=True)
+    (news_dir / f"{date_str}.html").write_text(
+        build_news_page(items, date_str, prefix="../"), encoding="utf-8"
+    )
+    print(f"  Wrote news/{date_str}.html", flush=True)
 
     inject_into_index(build_preview_section(items))
     print("Done.", flush=True)

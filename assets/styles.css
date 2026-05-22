@@ -601,6 +601,13 @@ table.data td.ticker {
 }
 .archive-item .links { font-size: 13px; }
 .archive-item .links a { margin-left: 12px; }
+.archive-item .links a.pulse-link {
+  margin-left: 14px;
+  padding-left: 14px;
+  border-left: 1px solid var(--line);
+  color: var(--navy-soft);
+  font-weight: 600;
+}
 
 /* ---------- Footer ---------- */
 .site-footer {
