@@ -273,6 +273,7 @@ def build_news_page(items: list[dict], date_str: str, prefix: str = "") -> str:
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Market Pulse — JDX · {display}</title>
 <link rel="stylesheet" href="{prefix}assets/styles.css">
+<script>(function(){{var d=document.documentElement;try{{d.setAttribute("data-theme",localStorage.getItem("jdx-theme")||"auto");d.setAttribute("data-size",localStorage.getItem("jdx-size")||"md");}}catch(e){{d.setAttribute("data-theme","auto");d.setAttribute("data-size","md");}}}})();</script>
 </head>
 <body>
 
@@ -311,6 +312,7 @@ def build_news_page(items: list[dict], date_str: str, prefix: str = "") -> str:
 </footer>
 
 <script src="{prefix}assets/reveal.js" defer></script>
+<script src="{prefix}assets/settings.js" defer></script>
 </body>
 </html>
 """

@@ -275,6 +275,7 @@ Use this HTML skeleton — fill in every [PLACEHOLDER]:
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{edition.capitalize()} — JDX Briefing · {disp}</title>
 <link rel="stylesheet" href="../../assets/styles.css">
+<script>(function(){{var d=document.documentElement;try{{d.setAttribute("data-theme",localStorage.getItem("jdx-theme")||"auto");d.setAttribute("data-size",localStorage.getItem("jdx-size")||"md");}}catch(e){{d.setAttribute("data-theme","auto");d.setAttribute("data-size","md");}}}})();</script>
 </head>
 <body>
 
@@ -326,6 +327,7 @@ Use this HTML skeleton — fill in every [PLACEHOLDER]:
 </footer>
 
 <script src="../../assets/reveal.js" defer></script>
+<script src="../../assets/settings.js" defer></script>
 </body>
 </html>
 """
@@ -406,6 +408,7 @@ def rebuild_index(date_str: str, standard_html: str) -> None:
 <title>JDX — Daily US Market Briefing</title>
 <meta name="description" content="Daily US market briefing — published at 9am HKT every morning, in concise, standard, and in-depth editions.">
 <link rel="stylesheet" href="assets/styles.css">
+<script>(function(){{var d=document.documentElement;try{{d.setAttribute("data-theme",localStorage.getItem("jdx-theme")||"auto");d.setAttribute("data-size",localStorage.getItem("jdx-size")||"md");}}catch(e){{d.setAttribute("data-theme","auto");d.setAttribute("data-size","md");}}}})();</script>
 </head>
 <body>
 
@@ -487,6 +490,7 @@ def rebuild_index(date_str: str, standard_html: str) -> None:
 </footer>
 
 <script src="assets/reveal.js" defer></script>
+<script src="assets/settings.js" defer></script>
 </body>
 </html>
 """

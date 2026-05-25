@@ -294,7 +294,7 @@ a:hover { text-decoration: underline; }
   margin: 0 0 18px;
   font-size: 16.5px;
   line-height: 1.75;
-  color: #1a2a42;
+  color: var(--navy-2);
 }
 .briefing-content ul {
   padding-left: 24px;
@@ -304,7 +304,7 @@ a:hover { text-decoration: underline; }
   font-size: 16.5px;
   line-height: 1.72;
   margin-bottom: 10px;
-  color: #1a2a42;
+  color: var(--navy-2);
 }
 .briefing-content strong { color: var(--navy); font-weight: 600; }
 .briefing-content em { color: var(--slate); }
@@ -839,7 +839,167 @@ table.data td.ticker {
   .stock-teaser-inner { flex-direction: column; align-items: flex-start; }
 }
 
-/* ---------- Scroll reveal (Apple-style fade-up) ---------- */
+/* =========================================================
+   Dark mode tokens
+   - [data-theme="dark"]  → always dark
+   - [data-theme="light"] → always light (default tokens already set)
+   - [data-theme="auto"]  → follows OS via @media below
+   ========================================================= */
+[data-theme="dark"] {
+  --navy:        #F1F4F8;
+  --navy-2:      #D1D8E2;
+  --navy-soft:   #7AB0FF;
+  --slate:       #9BA5B7;
+  --slate-light: #6B7588;
+  --line:        #262E3B;
+  --line-soft:   #1B2230;
+  --bg:          #0D131C;
+  --bg-card:     #161D27;
+  --green:       #3BB8A8;
+  --red:         #FF5564;
+  --amber:       #E6BC4A;
+}
+@media (prefers-color-scheme: dark) {
+  [data-theme="auto"] {
+    --navy:        #F1F4F8;
+    --navy-2:      #D1D8E2;
+    --navy-soft:   #7AB0FF;
+    --slate:       #9BA5B7;
+    --slate-light: #6B7588;
+    --line:        #262E3B;
+    --line-soft:   #1B2230;
+    --bg:          #0D131C;
+    --bg-card:     #161D27;
+    --green:       #3BB8A8;
+    --red:         #FF5564;
+    --amber:       #E6BC4A;
+  }
+}
+
+/* Dark-mode overrides for the few hardcoded colors */
+[data-theme="dark"] .site-header,
+[data-theme="auto"] .site-header {
+  background: rgba(13, 19, 28, 0.72);
+}
+@media (prefers-color-scheme: light) {
+  [data-theme="auto"] .site-header { background: rgba(255, 255, 255, 0.72); }
+}
+@media (prefers-color-scheme: dark) {
+  [data-theme="auto"] .site-header { background: rgba(13, 19, 28, 0.72); }
+}
+
+/* News sticker badge keeps its white look in both modes (sits over image) */
+
+/* =========================================================
+   Text size scale
+   [data-size="sm"] / "md" (default) / "lg"
+   ========================================================= */
+[data-size="sm"] body              { font-size: 15px; }
+[data-size="sm"] .hero h1          { font-size: 32px; }
+[data-size="sm"] .hero .lede       { font-size: 16px; }
+[data-size="sm"] .briefing-header h1   { font-size: 28px; }
+[data-size="sm"] .briefing-content h2  { font-size: 22px; }
+[data-size="sm"] .briefing-content h3  { font-size: 17px; }
+[data-size="sm"] .briefing-content p,
+[data-size="sm"] .briefing-content li  { font-size: 15.5px; }
+[data-size="sm"] .news-card h3     { font-size: 16.5px; }
+[data-size="sm"] .news-card p      { font-size: 13px; }
+[data-size="sm"] .news-hero h1     { font-size: 28px; }
+
+[data-size="lg"] body              { font-size: 17.5px; }
+[data-size="lg"] .hero h1          { font-size: 44px; }
+[data-size="lg"] .hero .lede       { font-size: 20px; }
+[data-size="lg"] .briefing-header h1   { font-size: 38px; }
+[data-size="lg"] .briefing-content h2  { font-size: 28px; }
+[data-size="lg"] .briefing-content h3  { font-size: 21px; }
+[data-size="lg"] .briefing-content p,
+[data-size="lg"] .briefing-content li  { font-size: 18.5px; }
+[data-size="lg"] .news-card h3     { font-size: 20px; }
+[data-size="lg"] .news-card p      { font-size: 15px; }
+[data-size="lg"] .news-hero h1     { font-size: 40px; }
+
+/* =========================================================
+   Settings panel — gear icon in nav, dropdown panel
+   ========================================================= */
+.settings-wrap { position: relative; display: inline-flex; align-items: center; }
+
+.settings-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px;
+  padding: 0; margin-left: 8px;
+  background: none; border: none; cursor: pointer;
+  color: var(--slate);
+  border-radius: 8px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.settings-btn:hover { background: var(--line-soft); color: var(--navy); }
+.settings-btn svg { width: 18px; height: 18px; display: block; }
+
+.settings-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 280px;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px 18px 18px;
+  box-shadow: 0 16px 44px rgba(11, 37, 69, 0.18);
+  z-index: 100;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity 180ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.settings-panel.is-open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.settings-group { margin-bottom: 16px; }
+.settings-group:last-child { margin-bottom: 0; }
+.settings-label {
+  font-family: var(--mono);
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 8px;
+}
+.settings-segments {
+  display: flex; gap: 3px;
+  background: var(--line-soft);
+  padding: 3px;
+  border-radius: 9px;
+}
+.settings-segments button {
+  flex: 1;
+  background: none; border: none; cursor: pointer;
+  padding: 7px 10px;
+  font-family: var(--sans);
+  font-size: 13px; font-weight: 500;
+  color: var(--slate);
+  border-radius: 6px;
+  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+.settings-segments button:hover { color: var(--navy); }
+.settings-segments button.active {
+  background: var(--bg-card);
+  color: var(--navy);
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(11, 37, 69, 0.10);
+}
+/* "Aa" buttons in the size group scale visually with their value */
+.settings-segments[data-group="size"] button[data-value="sm"] { font-size: 11px; }
+.settings-segments[data-group="size"] button[data-value="md"] { font-size: 13.5px; }
+.settings-segments[data-group="size"] button[data-value="lg"] { font-size: 16px; }
+
+/* Hide settings on print (PDFs) */
+@media print {
+  .settings-wrap, .settings-panel { display: none !important; }
+}
 .reveal {
   opacity: 0;
   transform: translateY(20px);
