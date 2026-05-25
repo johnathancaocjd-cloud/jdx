@@ -22,7 +22,10 @@
   --sans:  -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Helvetica Neue", system-ui, sans-serif;
   --serif: var(--sans);
   --mono:  ui-monospace, "SF Mono", Menlo, "Cascadia Mono", Consolas, monospace;
+  --scale: 1;
 }
+[data-size="sm"] { --scale: 0.875; }
+[data-size="lg"] { --scale: 1.15; }
 
 * { box-sizing: border-box; }
 
@@ -32,7 +35,7 @@ html, body {
   background: var(--bg);
   color: var(--navy-2);
   font-family: var(--sans);
-  font-size: 16px;
+  font-size: calc(16px * var(--scale));
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -61,7 +64,7 @@ a:hover { text-decoration: underline; }
 .wordmark {
   font-family: var(--serif);
   font-weight: 700;
-  font-size: 26px;
+  font-size: calc(26px * var(--scale));
   color: var(--navy);
   letter-spacing: -0.5px;
   display: flex;
@@ -70,13 +73,13 @@ a:hover { text-decoration: underline; }
 }
 .wordmark .accent {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: calc(11px * var(--scale));
   font-weight: 500;
   color: var(--slate);
   letter-spacing: 1.2px;
   text-transform: uppercase;
 }
-.site-nav { display: flex; align-items: center; gap: 22px; font-size: 14px; }
+.site-nav { display: flex; align-items: center; gap: 22px; font-size: calc(14px * var(--scale)); }
 .site-nav a {
   color: var(--navy-2);
   font-weight: 500;
@@ -92,7 +95,7 @@ a:hover { text-decoration: underline; }
 }
 .hero .eyebrow {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: calc(11px * var(--scale));
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--slate);
@@ -101,14 +104,14 @@ a:hover { text-decoration: underline; }
 .hero h1 {
   font-family: var(--sans);
   font-weight: 600;
-  font-size: 49px;
+  font-size: calc(49px * var(--scale));
   line-height: 1.08;
   color: var(--navy);
   margin: 0 0 14px;
   letter-spacing: -0.022em;
 }
 .hero .lede {
-  font-size: 19px;
+  font-size: calc(19px * var(--scale));
   color: var(--navy-2);
   max-width: 700px;
   line-height: 1.52;
@@ -137,7 +140,7 @@ a:hover { text-decoration: underline; }
 }
 .version-card .label {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: calc(11px * var(--scale));
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--slate);
@@ -145,17 +148,17 @@ a:hover { text-decoration: underline; }
 }
 .version-card h3 {
   font-family: var(--serif);
-  font-size: 24px;
+  font-size: calc(24px * var(--scale));
   color: var(--navy);
   margin: 0 0 8px;
 }
 .version-card .meta {
-  font-size: 13px;
+  font-size: calc(13px * var(--scale));
   color: var(--slate);
   margin-bottom: 14px;
 }
 .version-card p {
-  font-size: 14px;
+  font-size: calc(14px * var(--scale));
   color: var(--navy-2);
   margin: 0 0 18px;
   flex: 1;
@@ -168,7 +171,7 @@ a:hover { text-decoration: underline; }
   display: inline-block;
   padding: 9px 20px;
   border-radius: 980px;
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--scale));
   font-weight: 500;
   font-family: var(--sans);
   text-decoration: none !important;
@@ -198,7 +201,7 @@ a:hover { text-decoration: underline; }
 }
 .briefing-header .eyebrow {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: calc(11px * var(--scale));
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--slate);
@@ -207,7 +210,7 @@ a:hover { text-decoration: underline; }
 .briefing-header .eyebrow .dot { color: var(--red); margin: 0 6px; }
 .briefing-header h1 {
   font-family: var(--serif);
-  font-size: 40px;
+  font-size: calc(40px * var(--scale));
   font-weight: 700;
   line-height: 1.18;
   color: var(--navy);
@@ -215,7 +218,7 @@ a:hover { text-decoration: underline; }
   letter-spacing: -0.5px;
 }
 .briefing-header .deck {
-  font-size: 18px;
+  font-size: calc(18px * var(--scale));
   color: var(--slate);
   max-width: 720px;
   line-height: 1.6;
@@ -223,7 +226,7 @@ a:hover { text-decoration: underline; }
 }
 .briefing-meta {
   margin-top: 14px;
-  font-size: 13px;
+  font-size: calc(13px * var(--scale));
   color: var(--slate);
   display: flex;
   gap: 16px;
@@ -244,13 +247,13 @@ a:hover { text-decoration: underline; }
   position: sticky;
   top: 90px;
   align-self: start;
-  font-size: 13px;
+  font-size: calc(13px * var(--scale));
   border-left: 2px solid var(--line);
   padding-left: 14px;
 }
 .briefing-body .toc-title {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: calc(10px * var(--scale));
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--slate);
@@ -272,7 +275,7 @@ a:hover { text-decoration: underline; }
 
 .briefing-content h2 {
   font-family: var(--serif);
-  font-size: 23px;
+  font-size: calc(23px * var(--scale));
   font-weight: 600;
   color: var(--navy);
   margin: 44px 0 14px;
@@ -283,7 +286,7 @@ a:hover { text-decoration: underline; }
 .briefing-content h2:first-child { margin-top: 0; }
 .briefing-content h3 {
   font-family: var(--sans);
-  font-size: 15px;
+  font-size: calc(15px * var(--scale));
   font-weight: 700;
   color: var(--navy);
   text-transform: uppercase;
@@ -292,7 +295,7 @@ a:hover { text-decoration: underline; }
 }
 .briefing-content p {
   margin: 0 0 18px;
-  font-size: 16.5px;
+  font-size: calc(16.5px * var(--scale));
   line-height: 1.75;
   color: var(--navy-2);
 }
@@ -301,7 +304,7 @@ a:hover { text-decoration: underline; }
   margin: 0 0 20px;
 }
 .briefing-content li {
-  font-size: 16.5px;
+  font-size: calc(16.5px * var(--scale));
   line-height: 1.72;
   margin-bottom: 10px;
   color: var(--navy-2);
@@ -330,7 +333,7 @@ table.data {
   width: 100%;
   border-collapse: collapse;
   margin: 10px 0 24px;
-  font-size: 14.5px;
+  font-size: calc(14.5px * var(--scale));
   border: 1px solid var(--line);
   border-radius: 10px;
   overflow: hidden;
@@ -342,7 +345,7 @@ table.data th {
   text-align: left;
   font-family: var(--sans);
   font-weight: 600;
-  font-size: 12px;
+  font-size: calc(12px * var(--scale));
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }
@@ -350,7 +353,7 @@ table.data td {
   padding: 10px 14px;
   border-bottom: 1px solid var(--line);
   font-family: var(--sans);
-  font-size: 14.5px;
+  font-size: calc(14.5px * var(--scale));
   line-height: 1.5;
   vertical-align: top;
 }
@@ -360,12 +363,12 @@ table.data td.num, table.data th.num {
   font-family: var(--mono);
   font-variant-numeric: tabular-nums;
   text-align: right;
-  font-size: 14px;
+  font-size: calc(14px * var(--scale));
 }
 table.data td.ticker {
   font-family: var(--mono);
   font-weight: 600;
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--scale));
   color: var(--navy);
   background: var(--line-soft);
 }
@@ -381,7 +384,7 @@ table.data td.ticker {
 }
 .callout .label {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: calc(10px * var(--scale));
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--slate);
@@ -395,11 +398,11 @@ table.data td.ticker {
   margin-top: 40px;
   padding-top: 22px;
   border-top: 1px solid var(--line);
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--scale));
 }
 .sources h3 {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: calc(11px * var(--scale));
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--slate);
@@ -421,7 +424,7 @@ table.data td.ticker {
 }
 .news-section-header h2 {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: calc(11px * var(--scale));
   font-weight: 600;
   letter-spacing: 1.8px;
   text-transform: uppercase;
@@ -429,7 +432,7 @@ table.data td.ticker {
   margin: 0;
 }
 .news-section-header a {
-  font-size: 13px;
+  font-size: calc(13px * var(--scale));
   color: var(--navy-soft);
   font-weight: 500;
 }
@@ -496,7 +499,7 @@ table.data td.ticker {
   padding: 6px 12px 6px 10px;
   border-radius: 999px;
   font-family: var(--sans);
-  font-size: 11.5px;
+  font-size: calc(11.5px * var(--scale));
   font-weight: 700;
   letter-spacing: 0.2px;
   line-height: 1;
@@ -514,7 +517,7 @@ table.data td.ticker {
   left: 16px;
   z-index: 3;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: calc(10px * var(--scale));
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: #fff;
@@ -541,7 +544,7 @@ table.data td.ticker {
 }
 .news-card h3 {
   font-family: var(--serif);
-  font-size: 18px;
+  font-size: calc(18px * var(--scale));
   font-weight: 600;
   line-height: 1.34;
   color: var(--navy);
@@ -549,7 +552,7 @@ table.data td.ticker {
 }
 .news-card p {
   font-family: var(--sans);
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--scale));
   line-height: 1.58;
   color: var(--slate);
   margin: 0;
@@ -573,7 +576,7 @@ table.data td.ticker {
 }
 .news-ticker-chip {
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: calc(10.5px * var(--scale));
   font-weight: 600;
   color: var(--navy);
   background: var(--line-soft);
@@ -583,7 +586,7 @@ table.data td.ticker {
 }
 .news-source {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: calc(11px * var(--scale));
   color: var(--slate-light);
   letter-spacing: 0.3px;
 }
@@ -595,7 +598,7 @@ table.data td.ticker {
 }
 .news-hero .eyebrow {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: calc(11px * var(--scale));
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--slate);
@@ -603,13 +606,13 @@ table.data td.ticker {
 }
 .news-hero h1 {
   font-family: var(--serif);
-  font-size: 36px;
+  font-size: calc(36px * var(--scale));
   font-weight: 700;
   color: var(--navy);
   margin: 0 0 8px;
 }
 .news-hero p {
-  font-size: 16px;
+  font-size: calc(16px * var(--scale));
   color: var(--slate);
 }
 .news-page-grid {
@@ -630,15 +633,15 @@ table.data td.ticker {
 }
 .archive-item .date {
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: calc(13px * var(--scale));
   color: var(--slate);
 }
 .archive-item .title {
   font-family: var(--serif);
-  font-size: 18px;
+  font-size: calc(18px * var(--scale));
   color: var(--navy);
 }
-.archive-item .links { font-size: 13px; }
+.archive-item .links { font-size: calc(13px * var(--scale)); }
 .archive-item .links a { margin-left: 12px; }
 .archive-item .links a.pulse-link {
   margin-left: 14px;
@@ -653,11 +656,11 @@ table.data td.ticker {
   border-top: 1px solid var(--line);
   background: var(--bg-card);
   padding: 28px 0;
-  font-size: 13px;
+  font-size: calc(13px * var(--scale));
   color: var(--slate);
 }
 .site-footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-.site-footer .disclaimer { max-width: 700px; font-size: 12px; line-height: 1.5; }
+.site-footer .disclaimer { max-width: 700px; font-size: calc(12px * var(--scale)); line-height: 1.5; }
 
 /* ---------- Stock lookup ---------- */
 .stock-tools { padding: 24px 0 10px; }
@@ -666,7 +669,7 @@ table.data td.ticker {
 .stock-search input {
   flex: 1;
   font-family: var(--sans);
-  font-size: 15px;
+  font-size: calc(15px * var(--scale));
   padding: 13px 17px;
   border: 1px solid var(--line);
   border-radius: 12px;
@@ -685,11 +688,11 @@ table.data td.ticker {
 }
 .watchlist-head h2 {
   font-family: var(--serif);
-  font-size: 20px;
+  font-size: calc(20px * var(--scale));
   color: var(--navy);
   margin: 0;
 }
-.watchlist-head span { font-size: 13px; color: var(--slate); }
+.watchlist-head span { font-size: calc(13px * var(--scale)); color: var(--slate); }
 
 .watchlist-grid { display: flex; flex-wrap: wrap; gap: 8px; }
 .watchlist-chip {
@@ -710,12 +713,12 @@ table.data td.ticker {
 .watchlist-chip.active .wc-name { color: #fff; }
 .wc-ticker {
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: calc(13px * var(--scale));
   font-weight: 600;
   color: var(--navy);
 }
-.wc-name { font-size: 11px; color: var(--slate); }
-.watchlist-empty { font-size: 14px; color: var(--slate); }
+.wc-name { font-size: calc(11px * var(--scale)); color: var(--slate); }
+.watchlist-empty { font-size: calc(14px * var(--scale)); color: var(--slate); }
 
 .stock-result { padding: 30px 0 80px; }
 .stock-result-head {
@@ -729,13 +732,13 @@ table.data td.ticker {
 }
 .stock-result-head h2 {
   font-family: var(--serif);
-  font-size: 26px;
+  font-size: calc(26px * var(--scale));
   color: var(--navy);
   margin: 0;
 }
 .sr-sector {
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: calc(12px * var(--scale));
   text-transform: uppercase;
   letter-spacing: .04em;
   color: var(--slate);
@@ -750,7 +753,7 @@ table.data td.ticker {
 }
 .jdx-take-label {
   font-family: var(--sans);
-  font-size: 11px;
+  font-size: calc(11px * var(--scale));
   font-weight: 700;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -760,28 +763,28 @@ table.data td.ticker {
 .jdx-take p {
   margin: 0;
   font-family: var(--serif);
-  font-size: 16px;
+  font-size: calc(16px * var(--scale));
   line-height: 1.65;
   color: var(--navy);
 }
 .jdx-take-foot {
   margin-top: 8px;
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: calc(11px * var(--scale));
   color: var(--slate);
 }
 .jdx-take.pending, .jdx-take.generic { border-left-color: var(--slate-light); }
 .jdx-take.pending p, .jdx-take.generic p {
   font-family: var(--sans);
-  font-size: 14px;
+  font-size: calc(14px * var(--scale));
   color: var(--slate);
 }
 
 .tv-block { margin-bottom: 18px; }
 .tv-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-.tradingview-widget-copyright { font-family: var(--sans); font-size: 11px; padding-top: 4px; }
+.tradingview-widget-copyright { font-family: var(--sans); font-size: calc(11px * var(--scale)); padding-top: 4px; }
 .tradingview-widget-copyright a { color: var(--slate-light); text-decoration: none; }
-.tv-disclaimer { font-size: 12px; color: var(--slate); margin-top: 10px; }
+.tv-disclaimer { font-size: calc(12px * var(--scale)); color: var(--slate); margin-top: 10px; }
 
 /* ---------- Homepage stock teaser ---------- */
 .stock-teaser { padding: 8px 0; }
@@ -797,19 +800,19 @@ table.data td.ticker {
 }
 .stock-teaser-inner .label {
   font-family: var(--sans);
-  font-size: 11px;
+  font-size: calc(11px * var(--scale));
   font-weight: 700;
   letter-spacing: .08em;
   color: var(--amber);
 }
 .stock-teaser-inner h2 {
   font-family: var(--serif);
-  font-size: 22px;
+  font-size: calc(22px * var(--scale));
   color: #fff;
   margin: 6px 0 4px;
 }
 .stock-teaser-inner p {
-  font-size: 14px;
+  font-size: calc(14px * var(--scale));
   color: var(--slate-light);
   margin: 0;
   max-width: 520px;
@@ -827,8 +830,8 @@ table.data td.ticker {
   .versions { grid-template-columns: 1fr; }
   .briefing-body { grid-template-columns: 1fr; }
   .briefing-body .toc { display: none; }
-  .hero h1 { font-size: 32px; }
-  .briefing-header h1 { font-size: 28px; }
+  .hero h1 { font-size: calc(32px * var(--scale)); }
+  .briefing-header h1 { font-size: calc(28px * var(--scale)); }
   .news-grid { grid-template-columns: 1fr; }
   .news-grid.full { grid-template-columns: 1fr; }
 }
@@ -889,45 +892,6 @@ table.data td.ticker {
 }
 
 /* News sticker badge keeps its white look in both modes (sits over image) */
-
-/* =========================================================
-   Text size scale
-   sm ≈ 0.88×, md = default (no overrides), lg ≈ 1.15×
-   Defaults shown in comments for reference.
-   ========================================================= */
-[data-size="sm"] body                  { font-size: 14px;   }  /* 16  */
-[data-size="sm"] .hero h1              { font-size: 43px;   }  /* 49  */
-[data-size="sm"] .hero .lede           { font-size: 17px;   }  /* 19  */
-[data-size="sm"] .briefing-header h1   { font-size: 35px;   }  /* 40  */
-[data-size="sm"] .briefing-content h2  { font-size: 20px;   }  /* 23  */
-[data-size="sm"] .briefing-content h3  { font-size: 13.5px; }  /* 15  */
-[data-size="sm"] .briefing-content p,
-[data-size="sm"] .briefing-content li  { font-size: 14.5px; }  /* 16.5 */
-[data-size="sm"] .news-card h3         { font-size: 16px;   }  /* 18  */
-[data-size="sm"] .news-card p          { font-size: 12px;   }  /* 13.5 */
-[data-size="sm"] .news-hero h1         { font-size: 32px;   }  /* 36  */
-[data-size="sm"] .version-card h3      { font-size: 21px;   }  /* 24  */
-[data-size="sm"] .version-card .meta   { font-size: 12px;   }  /* 13  */
-[data-size="sm"] .version-card p       { font-size: 12.5px; }  /* 14  */
-[data-size="sm"] .stock-teaser-inner h2 { font-size: 19.5px; } /* 22  */
-[data-size="sm"] .stock-teaser-inner p  { font-size: 12.5px; } /* 14  */
-
-[data-size="lg"] body                  { font-size: 18.5px; }  /* 16  */
-[data-size="lg"] .hero h1              { font-size: 56px;   }  /* 49  */
-[data-size="lg"] .hero .lede           { font-size: 22px;   }  /* 19  */
-[data-size="lg"] .briefing-header h1   { font-size: 46px;   }  /* 40  */
-[data-size="lg"] .briefing-content h2  { font-size: 27px;   }  /* 23  */
-[data-size="lg"] .briefing-content h3  { font-size: 17px;   }  /* 15  */
-[data-size="lg"] .briefing-content p,
-[data-size="lg"] .briefing-content li  { font-size: 19px;   }  /* 16.5 */
-[data-size="lg"] .news-card h3         { font-size: 21px;   }  /* 18  */
-[data-size="lg"] .news-card p          { font-size: 15.5px; }  /* 13.5 */
-[data-size="lg"] .news-hero h1         { font-size: 42px;   }  /* 36  */
-[data-size="lg"] .version-card h3      { font-size: 28px;   }  /* 24  */
-[data-size="lg"] .version-card .meta   { font-size: 15px;   }  /* 13  */
-[data-size="lg"] .version-card p       { font-size: 16px;   }  /* 14  */
-[data-size="lg"] .stock-teaser-inner h2 { font-size: 26px;   } /* 22  */
-[data-size="lg"] .stock-teaser-inner p  { font-size: 16px;   } /* 14  */
 
 /* =========================================================
    Settings panel — gear icon in nav, dropdown panel
