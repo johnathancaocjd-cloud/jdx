@@ -501,8 +501,6 @@ table.data td.ticker {
   gap: 8px;
   flex: 1;
 }
-.news-card.bullish .news-card-body { border-top: 3px solid var(--green); }
-.news-card.bearish .news-card-body { border-top: 3px solid var(--red); }
 .news-card-top {
   display: flex;
   align-items: center;
@@ -512,14 +510,15 @@ table.data td.ticker {
   font-family: var(--mono);
   font-size: 10px;
   font-weight: 600;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.9px;
   text-transform: uppercase;
-  padding: 3px 9px;
-  border-radius: 20px;
+  padding: 2px 7px;
+  border-radius: 4px;
   white-space: nowrap;
+  line-height: 1.5;
 }
-.news-sentiment.bullish { background: rgba(42,157,143,0.13); color: var(--green); }
-.news-sentiment.bearish { background: rgba(230,57,70,0.11);  color: var(--red); }
+.news-sentiment.bullish { background: rgba(42,157,143,0.08);  color: var(--green); }
+.news-sentiment.bearish { background: rgba(230,57,70,0.075);  color: var(--red); }
 .news-card h3 {
   font-family: var(--serif);
   font-size: 16px;
