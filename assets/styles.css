@@ -906,6 +906,11 @@ table.data td.ticker {
 [data-size="sm"] .news-card h3         { font-size: 16px;   }  /* 18  */
 [data-size="sm"] .news-card p          { font-size: 12px;   }  /* 13.5 */
 [data-size="sm"] .news-hero h1         { font-size: 32px;   }  /* 36  */
+[data-size="sm"] .version-card h3      { font-size: 21px;   }  /* 24  */
+[data-size="sm"] .version-card .meta   { font-size: 12px;   }  /* 13  */
+[data-size="sm"] .version-card p       { font-size: 12.5px; }  /* 14  */
+[data-size="sm"] .stock-teaser-inner h2 { font-size: 19.5px; } /* 22  */
+[data-size="sm"] .stock-teaser-inner p  { font-size: 12.5px; } /* 14  */
 
 [data-size="lg"] body                  { font-size: 18.5px; }  /* 16  */
 [data-size="lg"] .hero h1              { font-size: 56px;   }  /* 49  */
@@ -918,6 +923,11 @@ table.data td.ticker {
 [data-size="lg"] .news-card h3         { font-size: 21px;   }  /* 18  */
 [data-size="lg"] .news-card p          { font-size: 15.5px; }  /* 13.5 */
 [data-size="lg"] .news-hero h1         { font-size: 42px;   }  /* 36  */
+[data-size="lg"] .version-card h3      { font-size: 28px;   }  /* 24  */
+[data-size="lg"] .version-card .meta   { font-size: 15px;   }  /* 13  */
+[data-size="lg"] .version-card p       { font-size: 16px;   }  /* 14  */
+[data-size="lg"] .stock-teaser-inner h2 { font-size: 26px;   } /* 22  */
+[data-size="lg"] .stock-teaser-inner p  { font-size: 16px;   } /* 14  */
 
 /* =========================================================
    Settings panel — gear icon in nav, dropdown panel
